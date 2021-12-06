@@ -1,25 +1,25 @@
 import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.textInput = React.createRef();
+    this.focusTextInput = this.focusTextInput.bind(this);
+  }
+  focusTextInput() {
+      console.log("dom element: ", this.textInput.current);
+    this.textInput.current.focus();
+  }
+  render() {
+    return (
+        <div>
+          <input type={"text"} ref={this.textInput} />
+          <input type={"button"} value={"Focus on the text field"} onClick={this.focusTextInput}/>
+        </div>
+    )
+  }
 }
 
 export default App;
